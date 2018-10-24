@@ -11,13 +11,21 @@ public class CalculadoraDuracaoMinutos {
 	}
 	
 	public int computar() {
-		if (viagem.getMinutosTermino() > viagem.getMinutoInicio()) 
-			duracaoMinutos = viagem.getMinutosTermino() - viagem.getMinutoInicio();
+		if (minutosTerminoEhMaiorQueMinutosInicio()) 
+			duracaoMinutos = minutosDecorridos();
 		else {
 			duracaoMinutos = 60 - viagem.getMinutoInicio() + viagem.getMinutosTermino();
 			if (duracaoMinutos == 60) //caso especial
 				duracaoMinutos = 0;
 		}
 		return duracaoMinutos;
+	}
+
+	private int minutosDecorridos() {
+		return viagem.getMinutosTermino() - viagem.getMinutoInicio();
+	}
+
+	private boolean minutosTerminoEhMaiorQueMinutosInicio() {
+		return viagem.getMinutosTermino() > viagem.getMinutoInicio();
 	}
 }
